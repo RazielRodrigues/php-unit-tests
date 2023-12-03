@@ -6,4 +6,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./src:/var/www/html
+      - ./app:/var/www/html
