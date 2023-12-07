@@ -7,6 +7,7 @@ PHPUnit is a test runner for PHP with it you can write simple and useful test ca
 - install php unit with composer install phpunit
 - run with vendor/bin/phpunit tests
     - here you can filter with --filter="FileTest.php"
+    - with data providers: --filter=testTotal#1 (will run the first index)
 - adds the phpunit.xml config file
     - configure styles
     - configure testsuits (test a whole file or folder)
