@@ -5,16 +5,26 @@ namespace TDD\Test;
 require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 use PHPUnit\Framework\TestCase;
+use TDD\Formatter;
 use TDD\Receipt;
 
 class ReceiptTest extends TestCase
 {
 
     public $Receipt;
+    public $Formatter;
+
 
     public function setUp()
     {
-        $this->Receipt = new Receipt();
+        $this->Formatter = $this->getMockBuilder('TDD\Formatter')
+            ->setMethods(['currencyAmt'])
+            ->getMock();
+        $this->Formatter->expects($this->any())
+            ->method('currencyAmt')
+            ->with($this->anything())
+            ->will($this->returnArgument(0));
+        $this->Receipt = new Receipt($this->Formatter);
     }
 
     public function tearDown()
@@ -84,6 +94,7 @@ class ReceiptTest extends TestCase
         $coupun = null;
         $Receipt = $this->getMockBuilder('TDD\Receipt')
             ->setMethods(['tax', 'subTotal'])
+            ->setConstructorArgs([$this->Formatter])
             ->getMock();
         $Receipt->expects($this->once())->method('tax')->with(10)->willReturn(1.0);
         $Receipt->expects($this->once())->method('subTotal')->with($item, $coupun)->willReturn(10.00);
@@ -92,27 +103,5 @@ class ReceiptTest extends TestCase
             11.00,
             $return
         );
-    }
-
-
-    /**
-     * @dataProvider provideCurrencyAmt
-     */
-    public function testCurrencyAmt($expected, $input, $msg)
-    {
-        $this->assertSame(
-            $expected,
-            $this->Receipt->currencyAmt($input),
-            $msg
-        );
-    }
-
-    public function provideCurrencyAmt()
-    {
-        return [
-            [1.00, 1, "should be 1.00"],
-            [1.11, 1.111, "should be 1.11"],
-            [1.22, 1.22222, "should be 1.22"]
-        ];
     }
 }

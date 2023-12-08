@@ -6,6 +6,12 @@ class Receipt
 {
 
     public $tax = 0;
+    public $Formatter;
+
+    public function __construct($formatter)
+    {
+        $this->Formatter = $formatter;
+    }
 
     public function subTotal(array $items = [], $coupun)
     {
@@ -23,17 +29,12 @@ class Receipt
 
     public function tax($amount)
     {
-        return ($amount * $this->tax);
+        return $this->Formatter->currencyAmt($amount * $this->tax);
     }
 
     public function postTaxSubTotal($valores, $coupun)
     {
         $subtotal = $this->subTotal($valores, $coupun);
         return $subtotal + $this->tax($subtotal, $this->tax);
-    }
-
-    public function currencyAmt($input)
-    {
-        return round($input, 2);
     }
 }
