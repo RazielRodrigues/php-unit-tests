@@ -2,9 +2,14 @@
 
 PHPUnit is a test runner for PHP with it you can write simple and useful test cases for your code.
 
+<img src="certificate.png">
+<img src="testes.png">
+
 # NOTES
 
-- install php unit with composer install phpunit
+- install php unit 
+    - composer install phpunit
+- create files with test and methods
 - run with vendor/bin/phpunit tests
     - here you can filter with --filter="FileTest.php"
     - with data providers: --filter=testTotal#1 (will run the first index)
@@ -26,6 +31,13 @@ Ability to test your code such as databases without production data or objects t
 - Stub: change original function execution
 - Spy: See how many times a function were called
 - Mock: a fake object for a input
+
+# TECH STACK
+
+- PHP 7.2
+- DOCKER
+- PHPUNIT
+- COMPOSER
 
 # REFERENCES:
 - https://www.linkedin.com/learning/php-test-driven-development-with-phpunit
