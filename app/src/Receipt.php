@@ -4,7 +4,10 @@ namespace TDD;
 
 class Receipt
 {
-    public function total(array $items = [], $coupun)
+
+    public $tax = 0;
+
+    public function subTotal(array $items = [], $coupun)
     {
         $sum = array_sum($items);
         if (!is_null($coupun)) {
@@ -18,15 +21,15 @@ class Receipt
         return $sum;
     }
 
-    public function tax($amount, $tax)
+    public function tax($amount)
     {
-        return ($amount * $tax);
+        return ($amount * $this->tax);
     }
 
-    public function postTaxTotal($valores, $tax, $coupun)
+    public function postTaxSubTotal($valores, $coupun)
     {
-        $subtotal = $this->total($valores, $coupun);
-        return $subtotal + $this->tax($subtotal, $tax);
+        $subtotal = $this->subTotal($valores, $coupun);
+        return $subtotal + $this->tax($subtotal, $this->tax);
     }
 
     public function currencyAmt($input)
