@@ -28,4 +28,9 @@ class Receipt
         $subtotal = $this->total($valores, $coupun);
         return $subtotal + $this->tax($subtotal, $tax);
     }
+
+    public function currencyAmt($input)
+    {
+        return round($input, 2);
+    }
 }

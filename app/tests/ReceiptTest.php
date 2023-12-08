@@ -92,4 +92,26 @@ class ReceiptTest extends TestCase
             $return
         );
     }
+
+
+    /**
+     * @dataProvider provideCurrencyAmt
+     */
+    public function testCurrencyAmt($expected, $input, $msg)
+    {
+        $this->assertSame(
+            $expected,
+            $this->Receipt->currencyAmt($input),
+            $msg
+        );
+    }
+
+    public function provideCurrencyAmt()
+    {
+        return [
+            [1.00, 1, "should be 1.00"],
+            [1.11, 1.111, "should be 1.11"],
+            [1.22, 1.22222, "should be 1.22"]
+        ];
+    }
 }
