@@ -3,6 +3,8 @@
 PHPUnit is a test runner for PHP with it you can write simple and useful test cases for your code.
 
 <img src="certificate.png">
+<img src="certificate-debug.png">
+
 <img src="testes.png">
 
 # NOTES
@@ -42,3 +44,7 @@ Ability to test your code such as databases without production data or objects t
 # REFERENCES:
 - https://www.linkedin.com/learning/php-test-driven-development-with-phpunit
 - https://phpunit.de/documentation.html
+
+
+PHP Test Driven Development
+https://www.linkedin.com/learning/certificates/975e8272c338a59fe814b0bc860be83f13199004ac5e3100234df0dcce98c713
