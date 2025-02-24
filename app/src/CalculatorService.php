@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\src;
+namespace TDD;
 
 class CalculatorService
 {
