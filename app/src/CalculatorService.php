@@ -6,7 +6,11 @@ namespace TDD;
 
 class CalculatorService
 {
-    
+
+    public function __construct(
+        private PrintCalculationService $printCalculationService
+    ) {}
+
     function sum(int $x, int $y): int
     {
         return $x + $y;
@@ -22,4 +26,17 @@ class CalculatorService
         return $x / $y;
     }
 
+    function show(int $result, string $type): string|array
+    {
+
+        if ($type === 'array') {
+            return $this->printCalculationService->array($result);
+        }
+
+        if ($type === 'print') {
+            return $this->printCalculationService->print($result);
+        }
+
+        throw new \Exception("Error Processing Request", 1);
+    }
 }
