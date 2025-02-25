@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src;
+namespace TDD;
 
 class PrintCalculationService
 {
